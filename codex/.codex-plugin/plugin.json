@@ -1,0 +1,35 @@
+{
+  "name": "compras-peru",
+  "version": "0.4.4",
+  "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
+  "author": {
+    "name": "Compras Perú",
+    "url": "https://market.ori-song.com"
+  },
+  "homepage": "https://market.ori-song.com",
+  "repository": "https://github.com/juanw2023/compras-peru",
+  "license": "MIT",
+  "keywords": [
+    "peru",
+    "supermercado",
+    "tottus",
+    "wong",
+    "metro",
+    "compras"
+  ],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Compras Perú",
+    "shortDescription": "Supermercados de Perú: busca, compara y encarga a Juan",
+    "longDescription": "Busca en Tottus, Wong y Metro con la foto y la ficha exactas, compara precios, arma el carrito y encarga la compra a Juan, que compra, paga y coordina la entrega. El agente nunca compra ni paga solo. Suscripción S/ 4 por 30 días en market.ori-song.com.",
+    "developerName": "Compras Perú",
+    "category": "Productivity",
+    "websiteURL": "https://market.ori-song.com",
+    "logo": "./assets/icon.png",
+    "defaultPrompt": [
+      "Compara leche Gloria, arroz Costeño y aceite Primor en Tottus, Wong y Metro",
+      "Arma mi carrito del súper y encárgaselo a Juan"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "compras-peru",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
   "author": {
     "name": "Compras Perú",
