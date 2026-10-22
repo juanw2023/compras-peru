@@ -1,0 +1,17 @@
+{
+  "name": "compras-peru-market",
+  "description": "Compras Perú: supermercados de Perú para agentes",
+  "owner": {
+    "name": "Compras Perú",
+    "url": "https://market.ori-song.com"
+  },
+  "plugins": [
+    {
+      "name": "compras-peru",
+      "source": "./claude",
+      "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
+      "version": "0.4.2",
+      "category": "productivity"
+    }
+  ]
+}

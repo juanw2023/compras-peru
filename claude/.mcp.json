@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "compras-peru": {
+      "command": "uvx",
+      "args": [
+        "--quiet",
+        "--from",
+        "https://market.ori-song.com/static/descargas/compras_multicomercio-0.4.2-py3-none-any.whl",
+        "compras-cliente"
+      ],
+      "env": {
+        "COMPRAS_PERU_URL": "https://market.ori-song.com/mcp",
+        "COMPRAS_PERU_TOKEN": "${user_config.compras_token}"
+      }
+    }
+  }
+}

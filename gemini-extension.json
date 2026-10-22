@@ -1,0 +1,29 @@
+{
+  "name": "compras-peru",
+  "version": "0.4.2",
+  "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "compras-peru": {
+      "command": "uvx",
+      "args": [
+        "--quiet",
+        "--from",
+        "https://market.ori-song.com/static/descargas/compras_multicomercio-0.4.2-py3-none-any.whl",
+        "compras-cliente"
+      ],
+      "env": {
+        "COMPRAS_PERU_URL": "https://market.ori-song.com/mcp",
+        "COMPRAS_PERU_TOKEN": "${COMPRAS_PERU_TOKEN}"
+      }
+    }
+  },
+  "settings": [
+    {
+      "name": "Clave de Compras Perú",
+      "description": "La clave que recibes al activar la suscripción en market.ori-song.com",
+      "envVar": "COMPRAS_PERU_TOKEN",
+      "sensitive": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "compras-peru-market",
+  "interface": {
+    "displayName": "Compras Perú"
+  },
+  "plugins": [
+    {
+      "name": "compras-peru",
+      "source": {
+        "source": "local",
+        "path": "./codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

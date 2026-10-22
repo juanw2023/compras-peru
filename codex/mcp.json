@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "compras-peru": {
+      "command": "uvx",
+      "args": [
+        "--quiet",
+        "--from",
+        "https://market.ori-song.com/static/descargas/compras_multicomercio-0.4.2-py3-none-any.whl",
+        "compras-cliente"
+      ],
+      "type": "stdio",
+      "env": {
+        "COMPRAS_PERU_URL": "https://market.ori-song.com/mcp"
+      },
+      "env_vars": [
+        "COMPRAS_PERU_TOKEN"
+      ]
+    }
+  }
+}
