@@ -1,6 +1,6 @@
 {
   "name": "compras-peru",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
   "contextFileName": "GEMINI.md",
   "mcpServers": {
@@ -9,7 +9,7 @@
       "args": [
         "--quiet",
         "--from",
-        "https://market.ori-song.com/static/descargas/compras_multicomercio-0.4.4-py3-none-any.whl",
+        "https://market.ori-song.com/static/descargas/compras_multicomercio-0.4.5-py3-none-any.whl",
         "compras-cliente"
       ],
       "env": {

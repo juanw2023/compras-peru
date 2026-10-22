@@ -3,6 +3,7 @@
 Tu agente de IA (Claude Code, Codex o Gemini CLI) busca en **Tottus, Wong y Metro**, te muestra la foto y la ficha exactas de cada producto, compara precios entre cadenas, arma el carrito y encarga la compra. **Juan compra, paga y coordina la entrega por ti**: el agente nunca compra ni paga solo, y tú no necesitas cuenta en ningún supermercado.
 
 - Suscripción: **S/ 4 por 30 días** en https://market.ori-song.com (pagas con Yape; la clave aparece al confirmar el pago).
+- Por cada pedido que Juan gestiona: tarifa de servicio de **S/ 5 o el 5 % de la compra, lo que sea mayor**, desglosada en la cotización.
 - Requiere [uv](https://docs.astral.sh/uv/) (`curl -LsSf https://astral.sh/uv/install.sh | sh`).
 
 ## Instalar
@@ -23,7 +24,7 @@ mkdir -p ~/.config/compras-peru && (umask 077; read -rs CLAVE && printf %s "$CLA
 
 1. Pídele a tu agente lo que necesitas («2 leches Gloria azul y 1 kg de arroz Costeño, lo más barato»).
 2. El agente compara, te enseña la foto y la ficha y arma el carrito; tú confirmas.
-3. Con tu sí, el agente encarga el pedido: Juan lo recibe al instante, lo cotiza y tú aceptas el importe exacto.
+3. Con tu sí, el agente encarga el pedido: Juan lo recibe al instante, lo cotiza (compra + tarifa de servicio) y tú aceptas el total exacto.
 4. Juan compra y coordina la entrega; el pedido pasa a «completado».
 
 Tottus se lee desde tu propia conexión; Wong, Metro, carritos y pedidos pasan por el servicio con tu clave. Instalar no crea cuentas, no cobra y no compra nada.

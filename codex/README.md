@@ -1,6 +1,6 @@
 # Compras Perú para Codex
 
-Tu agente busca en **Tottus, Wong y Metro**, ve la foto y la ficha exactas de cada producto, compara precios, arma el carrito y encarga la compra. **Juan compra, paga y coordina la entrega por ti**; el agente nunca compra ni paga solo. Suscripción: S/ 4 por 30 días en https://market.ori-song.com (Yape; la clave aparece al confirmar el pago). Requiere [uv](https://docs.astral.sh/uv/) instalado.
+Tu agente busca en **Tottus, Wong y Metro**, ve la foto y la ficha exactas de cada producto, compara precios, arma el carrito y encarga la compra. **Juan compra, paga y coordina la entrega por ti**; el agente nunca compra ni paga solo. Suscripción: S/ 4 por 30 días en https://market.ori-song.com (Yape; la clave aparece al confirmar el pago), más una tarifa por pedido gestionado de S/ 5 o el 5 % de la compra, lo que sea mayor. Requiere [uv](https://docs.astral.sh/uv/) instalado.
 
 ```sh
 codex plugin marketplace add juanw2023/compras-peru
