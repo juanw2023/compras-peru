@@ -8,3 +8,5 @@ claude plugin install compras-peru@compras-peru-market   # pide tu clave y la gu
 ```
 
 Tottus se lee desde tu propia conexión; Wong, Metro, carritos y pedidos pasan por el servicio con tu clave. Más información: https://github.com/juanw2023/compras-peru
+
+Qué ejecuta y a dónde se conecta: al iniciar, `uvx` descarga el cliente `compras_multicomercio` 0.4.5 (wheel publicado en https://market.ori-song.com/static/descargas/) y lo ejecuta en tu equipo; ese cliente lee Tottus desde tu propia conexión y envía las búsquedas de Wong y Metro, los carritos y los pedidos a https://market.ori-song.com/mcp con tu clave como Bearer. El código del cliente y del servidor vive fuera de este repositorio.

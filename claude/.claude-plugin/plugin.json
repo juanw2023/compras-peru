@@ -1,5 +1,6 @@
 {
   "name": "compras-peru",
+  "displayName": "Compras Perú",
   "version": "0.4.5",
   "description": "Busca en Tottus, Wong y Metro con foto y ficha exactas, compara, arma el carrito y encarga la compra a Juan, que compra y entrega por ti (Perú).",
   "author": {
@@ -8,6 +9,8 @@
   },
   "homepage": "https://market.ori-song.com",
   "repository": "https://github.com/juanw2023/compras-peru",
+  "documentationUrl": "https://github.com/juanw2023/compras-peru#readme",
+  "icon": "./assets/icon.png",
   "keywords": [
     "peru",
     "supermercado",

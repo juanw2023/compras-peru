@@ -28,3 +28,5 @@ mkdir -p ~/.config/compras-peru && (umask 077; read -rs CLAVE && printf %s "$CLA
 4. Juan compra y coordina la entrega; el pedido pasa a «completado».
 
 Tottus se lee desde tu propia conexión; Wong, Metro, carritos y pedidos pasan por el servicio con tu clave. Instalar no crea cuentas, no cobra y no compra nada.
+
+Qué ejecuta y a dónde se conecta: al iniciar, `uvx` descarga el cliente `compras_multicomercio` 0.4.5 (wheel publicado en https://market.ori-song.com/static/descargas/) y lo ejecuta en tu equipo; ese cliente lee Tottus desde tu propia conexión y envía las búsquedas de Wong y Metro, los carritos y los pedidos a https://market.ori-song.com/mcp con tu clave como Bearer. El servidor MCP y el cliente no viven en este repositorio: aquí solo está el empaquetado para cada agente.

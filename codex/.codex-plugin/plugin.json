@@ -21,7 +21,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Compras Perú",
-    "shortDescription": "Supermercados de Perú: busca, compara y encarga a Juan",
+    "shortDescription": "Supermercados de Perú con Juan",
     "longDescription": "Busca en Tottus, Wong y Metro con la foto y la ficha exactas, compara precios, arma el carrito y encarga la compra a Juan, que compra, paga y coordina la entrega. El agente nunca compra ni paga solo. Suscripción S/ 4 por 30 días en market.ori-song.com.",
     "developerName": "Compras Perú",
     "category": "Productivity",
