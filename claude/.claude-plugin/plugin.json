@@ -8,6 +8,7 @@
   },
   "homepage": "https://market.ori-song.com",
   "repository": "https://github.com/juanw2023/compras-peru",
+  "icon": "./.claude-plugin/icon.png",
   "keywords": [
     "peru",
     "supermercado",

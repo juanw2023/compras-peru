@@ -171,6 +171,30 @@ class Rojos(Base):
         (self.copia / "codex" / "README.md").write_text("Servidor en 10.2." + "3.4\n", encoding="utf-8")
         self.assertFalla("dirección IP")
 
+    def test_nombre_reservado(self):
+        d = self.leer(validar.MARKETPLACE_CLAUDE)
+        d["name"] = "claude-plugins-official"
+        self.escribir(validar.MARKETPLACE_CLAUDE, d)
+        self.assertFalla("reservado")
+
+    def test_userconfig_clave_desconocida(self):
+        d = self.leer(validar.PLUGIN_CLAUDE)
+        d["userConfig"]["compras_token"]["secreto"] = True
+        self.escribir(validar.PLUGIN_CLAUDE, d)
+        self.assertFalla("claves no admitidas")
+
+    def test_userconfig_no_declarado(self):
+        d = self.leer(validar.MCP_CLAUDE)
+        d["mcpServers"]["compras-peru"]["env"]["OTRA"] = "${user_config.otra}"
+        self.escribir(validar.MCP_CLAUDE, d)
+        self.assertFalla("no está declarado")
+
+    def test_default_prompt_largo(self):
+        d = self.leer(validar.PLUGIN_CODEX)
+        d["interface"]["defaultPrompt"][0] = "compara " * 20
+        self.escribir(validar.PLUGIN_CODEX, d)
+        self.assertFalla("defaultPrompt[0]")
+
     def test_cli_sale_con_uno(self):
         d = self.leer(validar.GEMINI)
         d["version"] = "1.0.0"

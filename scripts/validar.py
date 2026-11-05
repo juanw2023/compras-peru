@@ -54,6 +54,17 @@ WHEEL_RE = re.compile(r"compras_multicomercio-(\d+\.\d+\.\d+)-py3-none-any\.whl"
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
 KEBAB_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
+# Nombres de marketplace reservados por Claude Code (docs: plugins/marketplace-reference).
+NOMBRES_RESERVADOS = {
+    "claude-code-marketplace", "claude-code-plugins", "claude-plugins-official", "anthropic-marketplace",
+    "anthropic-plugins", "agent-skills", "anthropic-agent-skills", "knowledge-work-plugins", "claude-community",
+    "claude-plugins-community", "anthropic-plugin-directory", "claude-plugin-directory", "inline", "builtin",
+    "skills-dir", "synced", "npm", "github", "gh",
+}
+# Claves admitidas en cada opción de userConfig (Claude Code las valida en modo estricto).
+USERCONFIG_CLAVES = {"type", "title", "description", "required", "default", "options", "multiple", "sensitive", "min", "max"}
+USERCONFIG_TIPOS = {"string", "number", "boolean", "directory", "file"}
+
 # --- Barrido de secretos ----------------------------------------------------------
 
 EXTENSIONES_TEXTO = {".json", ".md", ".py", ".txt", ".toml", ".yml", ".yaml", ".sh", ".cfg", ".ini", ""}
@@ -208,6 +219,9 @@ class Validador:
             nombre = mk.get("name")
             if not isinstance(nombre, str) or not KEBAB_RE.match(nombre):
                 self.error(f"{rel}: 'name' debe ser kebab-case (minúsculas, números y guiones): {nombre!r}")
+            elif nombre in NOMBRES_RESERVADOS or nombre.startswith("claudeai-") or (
+                    re.search(r"anthropic|claude", nombre) and re.search(r"official|oficial", nombre)):
+                self.error(f"{rel}: 'name' {nombre!r} está reservado o imita un marketplace oficial")
             plugins = mk.get("plugins")
             if not isinstance(plugins, list) or not plugins:
                 self.error(f"{rel}: 'plugins' debe ser una lista no vacía")
@@ -289,6 +303,13 @@ class Validador:
             prompts = (codex.get("interface") or {}).get("defaultPrompt") or []
             if len(prompts) > 3:
                 self.aviso(f"{PLUGIN_CODEX}: defaultPrompt tiene {len(prompts)} frases; Codex muestra como mucho 3")
+            for i, frase in enumerate(prompts):
+                if not isinstance(frase, str) or not frase or len(frase) > 128:
+                    self.error(f"{PLUGIN_CODEX}: defaultPrompt[{i}] debe ser texto de 1 a 128 caracteres")
+        icono = self.obj(PLUGIN_CLAUDE).get("icon")
+        if icono is not None and not (isinstance(icono, str) and icono.startswith("./")
+                                      and (self.raiz / "claude" / icono).is_file()):
+            self.error(f"{PLUGIN_CLAUDE}: 'icon' ({icono!r}) debe ser una ruta './…' a un archivo del plugin")
         gem = self.obj(GEMINI)
         ctx = gem.get("contextFileName")
         if GEMINI in self.json and (not isinstance(ctx, str) or not (self.raiz / ctx).is_file()):
@@ -352,6 +373,22 @@ class Validador:
                         self.error(f"{rel}: mcpServers.{nombre}.env.{k} debe ser un marcador "
                                    f"({' o '.join(sorted(MARCADORES_CLAVE))}), no un valor")
         uc = self.obj(PLUGIN_CLAUDE).get("userConfig") or {}
+        for clave, op in uc.items():
+            if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", clave):
+                self.error(f"{PLUGIN_CLAUDE}: userConfig.{clave}: el nombre solo admite letras, dígitos y '_'")
+            if not isinstance(op, dict):
+                continue
+            sobran = set(op) - USERCONFIG_CLAVES
+            if sobran:
+                self.error(f"{PLUGIN_CLAUDE}: userConfig.{clave} tiene claves no admitidas: {sorted(sobran)}")
+            if op.get("type") not in USERCONFIG_TIPOS:
+                self.error(f"{PLUGIN_CLAUDE}: userConfig.{clave}.type debe ser uno de {sorted(USERCONFIG_TIPOS)}")
+            for k in ("title", "description"):
+                if not op.get(k):
+                    self.error(f"{PLUGIN_CLAUDE}: userConfig.{clave}.{k} es obligatorio")
+        usados = set(re.findall(r"\$\{user_config\.([A-Za-z0-9_]+)\}", json.dumps(self.json.get(MCP_CLAUDE, {}))))
+        for clave in sorted(usados - set(uc)):
+            self.error(f"{MCP_CLAUDE}: usa ${{user_config.{clave}}}, que no está declarado en userConfig")
         opt = uc.get("compras_token")
         if PLUGIN_CLAUDE in self.json:
             if not isinstance(opt, dict):
