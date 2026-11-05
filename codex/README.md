@@ -4,7 +4,7 @@ Tu agente busca en **Tottus, Wong y Metro**, ve la foto y la ficha exactas de ca
 
 ```sh
 codex plugin marketplace add juanw2023/compras-peru
-codex plugin add compras-peru@compras-peru-market
+# luego, en Codex: /plugins y activa «Compras Perú» (comando exacto por verificar según tu versión)
 # la clave: en el archivo (recomendado) o en COMPRAS_PERU_TOKEN del entorno
 mkdir -p ~/.config/compras-peru && (umask 077; read -rs CLAVE && printf %s "$CLAVE" > ~/.config/compras-peru/clave)
 ```
