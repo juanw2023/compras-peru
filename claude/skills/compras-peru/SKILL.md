@@ -1,6 +1,6 @@
 ---
 name: compras-peru
-description: Buscar productos de supermercado en Perú (Tottus, Wong, Metro) por ficha y foto exactas, comparar precios, armar el carrito y encargar la compra al operador con Compras Perú.
+description: Compra del súper en Perú con Compras Perú. Úsala cuando el cliente quiera buscar productos o saber cuánto cuesta algo en Tottus, Wong o Metro, comparar precios entre supermercados («¿dónde está más barato?», «compara leche Gloria»), hacer la compra del súper o del mercado, armar su carrito o su lista de compras, o encargar el pedido para que se lo lleven a casa. Muestra ficha y foto exactas, arma el carrito y encarga la compra al operador, que compra, paga y entrega; el agente nunca compra ni paga solo.
 ---
 
 # Compras Perú
